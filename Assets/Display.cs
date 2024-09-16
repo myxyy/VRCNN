@@ -13,15 +13,15 @@ public class Display : UdonSharpBehaviour
 
     private void Start()
     {
+    }
+
+    public void SetTexture(RenderTexture renderTexture)
+    {
         var displayObject = Instantiate(_displayPrefab);
         _displayMaterial = displayObject.GetComponent<MeshRenderer>().material;
         Destroy(displayObject);
         var renderer = GetComponent<MeshRenderer>();
         renderer.material = _displayMaterial;
-    }
-
-    public void SetTexture(RenderTexture renderTexture)
-    {
         _displayMaterial.SetTexture("_MainTex", renderTexture);
     }
 }
