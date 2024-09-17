@@ -22,4 +22,9 @@ public class Matrix : IVariable
         _grad = new RenderTexture(_row, _column, 0, RenderTextureFormat.RFloat, 0);
         _isTextureReady = true;
     }
+
+    public override void ZeroGrad()
+    {
+        _grad = new RenderTexture(_row, _column, 0, RenderTextureFormat.RFloat, 0);
+    }
 }

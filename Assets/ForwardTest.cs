@@ -61,6 +61,12 @@ public class ForwardTest : UdonSharpBehaviour
             VRCGraphics.Blit(null, _c.Data(), _initC);
             VRCGraphics.Blit(null, _d.Data(), _initD);
             VRCGraphics.Blit(null, _e.Data(), _initE);
+
+            _a.ZeroGrad();
+            _b.ZeroGrad();
+            _c.ZeroGrad();
+            _d.ZeroGrad();
+            _e.ZeroGrad();
  
             _a.Forward();
             _forward = false;

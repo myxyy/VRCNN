@@ -4,6 +4,8 @@ Shader "Unlit/MatMul"
     {
         _MatA ("Matrix LxM", 2D) = "black" {}
         _MatB ("Matrix MxN", 2D) = "black" {}
+        _TransposeA ("Transpose A", Float) = 0
+        _TransposeB ("Transpose B", Float) = 0
         _MainTex ("Matrix LxN To Accumulate", 2D) = "black" {}
         _MInd ("M Index To Accumulate", Int) = 1
     }
@@ -41,6 +43,8 @@ Shader "Unlit/MatMul"
             sampler2D _MainTex;
             float4 _MainTex_TexelSize;
             float _MInd;
+            float _TransposeA;
+            float _TransposeB;
 
             v2f vert (appdata v)
             {
@@ -53,8 +57,10 @@ Shader "Unlit/MatMul"
             float4 frag (v2f i) : SV_Target
             {
                 float4 prev = tex2Dlod(_MainTex, float4(i.uv,0,0));
-                float4 a = tex2Dlod(_MatA, float4(i.uv.x, (_MInd + .5) / _MatA_TexelSize.w, 0, 0));
-                float4 b = tex2Dlod(_MatB, float4((_MInd + .5) / _MatB_TexelSize.z, i.uv.y, 0, 0));
+                float2 uva = float2(i.uv.x, (_MInd + .5) / _MatA_TexelSize.w);
+                float4 a = tex2Dlod(_MatA, float4(_TransposeA ? uva.yx : uva, 0, 0));
+                float2 uvb = float2((_MInd + .5) / _MatB_TexelSize.z, i.uv.y);
+                float4 b = tex2Dlod(_MatB, float4(_TransposeB ? uvb.yx : uvb, 0, 0));
                 return prev + a*b;
             }
             ENDCG

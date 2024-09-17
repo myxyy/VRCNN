@@ -17,7 +17,25 @@ public class IVariable : UdonSharpBehaviour
             output.Forward();
         }
     }
-    public virtual void Backward(){}
+    public void Backward()
+    {
+        if (IsBackwardReady() && _input != null)
+        {
+            _input.Backward();
+        }
+    }
+    public bool IsBackwardReady()
+    {
+        foreach (var output in _outputList)
+        {
+            if (!output.IsBackwardComplete())
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+ 
     private IFunction _input;
     public void SetInput(IFunction input) => _input = input;
     public bool IsForwardReady() => _input ? _input.IsForwardComplete() : true;
@@ -32,5 +50,7 @@ public class IVariable : UdonSharpBehaviour
         newOutputList[_outputList.Length] = output;
         _outputList = newOutputList;
     }
+
+    public virtual void ZeroGrad(){}
 }
 
