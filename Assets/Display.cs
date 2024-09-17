@@ -8,15 +8,27 @@ using VRC.Udon;
 public class Display : UdonSharpBehaviour
 {
     [SerializeField]
+    private IVariable _target;
+    [SerializeField]
+    private bool _isGrad = false;
+    [SerializeField]
     private GameObject _displayPrefab;
     private Material _displayMaterial;
+    private bool _isSetComplete = false;
 
-    private void Start()
+    private void Update()
     {
+        if (!_isSetComplete && _target.IsTextureReady())
+        {
+            SetTexture(_isGrad ? _target.Grad() : _target.Data());
+        }
     }
-
-    public void SetTexture(RenderTexture renderTexture)
+    private void SetTexture(RenderTexture renderTexture)
     {
+        if (renderTexture == null)
+        {
+            return;
+        }
         var displayObject = Instantiate(_displayPrefab);
         _displayMaterial = displayObject.GetComponent<MeshRenderer>().material;
         Destroy(displayObject);

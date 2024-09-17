@@ -165,8 +165,6 @@ MonoBehaviour:
   _udonSharpBackingUdonBehaviour: {fileID: 126129410}
   _row: 1024
   _column: 1024
-  _dataDisplay: {fileID: 1030192596}
-  _gradDisplay: {fileID: 0}
 --- !u!114 &126129410
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -448,6 +446,8 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _udonSharpBackingUdonBehaviour: {fileID: 333892623}
+  _target: {fileID: 1182786832}
+  _isGrad: 0
   _displayPrefab: {fileID: 99230720127760656, guid: 3596933c5b562a34292006f3754cacd0,
     type: 3}
 --- !u!114 &333892623
@@ -583,6 +583,8 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _udonSharpBackingUdonBehaviour: {fileID: 651232868}
+  _target: {fileID: 1377995726}
+  _isGrad: 0
   _displayPrefab: {fileID: 99230720127760656, guid: 3596933c5b562a34292006f3754cacd0,
     type: 3}
 --- !u!114 &651232868
@@ -783,6 +785,8 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _udonSharpBackingUdonBehaviour: {fileID: 674897540}
+  _target: {fileID: 1337800990}
+  _isGrad: 0
   _displayPrefab: {fileID: 99230720127760656, guid: 3596933c5b562a34292006f3754cacd0,
     type: 3}
 --- !u!114 &674897540
@@ -973,8 +977,6 @@ MonoBehaviour:
   _udonSharpBackingUdonBehaviour: {fileID: 773643697}
   _row: 1024
   _column: 1024
-  _dataDisplay: {fileID: 820601734}
-  _gradDisplay: {fileID: 0}
 --- !u!4 &773643699
 Transform:
   m_ObjectHideFlags: 0
@@ -1032,6 +1034,8 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _udonSharpBackingUdonBehaviour: {fileID: 820601735}
+  _target: {fileID: 773643698}
+  _isGrad: 0
   _displayPrefab: {fileID: 99230720127760656, guid: 3596933c5b562a34292006f3754cacd0,
     type: 3}
 --- !u!114 &820601735
@@ -1247,6 +1251,8 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _udonSharpBackingUdonBehaviour: {fileID: 1030192597}
+  _target: {fileID: 126129409}
+  _isGrad: 0
   _displayPrefab: {fileID: 99230720127760656, guid: 3596933c5b562a34292006f3754cacd0,
     type: 3}
 --- !u!114 &1030192597
@@ -1382,8 +1388,6 @@ MonoBehaviour:
   _udonSharpBackingUdonBehaviour: {fileID: 1182786833}
   _row: 1024
   _column: 1024
-  _dataDisplay: {fileID: 333892622}
-  _gradDisplay: {fileID: 0}
 --- !u!114 &1182786833
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -1467,8 +1471,6 @@ MonoBehaviour:
   _udonSharpBackingUdonBehaviour: {fileID: 1337800991}
   _row: 1024
   _column: 1024
-  _dataDisplay: {fileID: 674897539}
-  _gradDisplay: {fileID: 0}
 --- !u!114 &1337800991
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -1578,8 +1580,6 @@ MonoBehaviour:
   _udonSharpBackingUdonBehaviour: {fileID: 1377995725}
   _row: 1024
   _column: 1024
-  _dataDisplay: {fileID: 651232867}
-  _gradDisplay: {fileID: 0}
 --- !u!4 &1377995727
 Transform:
   m_ObjectHideFlags: 0
