@@ -43,7 +43,7 @@ Shader "Unlit/Display"
 
             float4 frag (v2f i) : SV_Target
             {
-                float4 col = tex2Dlod(_MainTex, float4(i.uv,0,0));
+                float4 col = tex2Dlod(_MainTex, float4(i.uv.y, 1-i.uv.x,0,0));
                 //col = tanh(col);
                 return float4(max(col.r, 0), 0, -min(col.r, 0), 1);
             }

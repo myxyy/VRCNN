@@ -53,8 +53,8 @@ Shader "Unlit/MatMul"
             float4 frag (v2f i) : SV_Target
             {
                 float4 prev = tex2Dlod(_MainTex, float4(i.uv,0,0));
-                float4 a = tex2Dlod(_MatA, float4((_MInd + .5) / _MatA_TexelSize.z, i.uv.y, 0, 0));
-                float4 b = tex2Dlod(_MatB, float4(i.uv.x, (_MInd + .5) / _MatB_TexelSize.w, 0, 0));
+                float4 a = tex2Dlod(_MatA, float4(i.uv.x, (_MInd + .5) / _MatA_TexelSize.w, 0, 0));
+                float4 b = tex2Dlod(_MatB, float4((_MInd + .5) / _MatB_TexelSize.z, i.uv.y, 0, 0));
                 return prev + a*b;
             }
             ENDCG

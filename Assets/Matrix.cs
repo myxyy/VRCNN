@@ -22,8 +22,8 @@ public class Matrix : IVariable
     public override RenderTexture Grad() => _grad;
     private void Start()
     {
-        _data = new RenderTexture(_column, _row, 0, RenderTextureFormat.RFloat, 0);
-        _grad = new RenderTexture(_column, _row, 0, RenderTextureFormat.RFloat, 0);
+        _data = new RenderTexture(_row, _column, 0, RenderTextureFormat.RFloat, 0);
+        _grad = new RenderTexture(_row, _column, 0, RenderTextureFormat.RFloat, 0);
         if (_dataDisplay)
         {
             Debug.Log($"{gameObject.name} {_data == null}");
