@@ -18,11 +18,11 @@ public class BackwardTrigger : IFunction
 
     public override void Forward()
     {
+        base.Forward();
         if (IsForwardReady())
         {
             VRCGraphics.Blit(null, _input.Grad(), _oneMaterial);
-            _isBackwardComplete = true;
-            _input.Backward();
+            FireInputBackward();
         }
     }
 }

@@ -130,7 +130,6 @@ public class MatMul : IFunction
             {
                 case FORWARD:
                 {
-                    _isForwardComplete = true;
                     FireOutputForward();
                     _mode = SLEEP;
                     break;
@@ -143,7 +142,6 @@ public class MatMul : IFunction
                 }
                 case BACKWARD_B:
                 {
-                    _isBackwardComplete = true;
                     FireInputBackward();
                     _mode = SLEEP;
                     break;
@@ -158,21 +156,21 @@ public class MatMul : IFunction
 
     public override void Forward()
     {
+        base.Forward();
         if (IsForwardReady())
         {
             _currentMInd = 0;
             _mode = FORWARD;
-            _isForwardComplete = false;
         }
     }
 
     public override void Backward()
     {
+        base.Backward();
         if (IsBackwardReady())
         {
             _currentMInd = 0;
             _isRequestBackward = true;
-            _isBackwardComplete = false;
         }
     }
 }
