@@ -19,7 +19,9 @@ public class Matrix : IVariable
     private void Start()
     {
         _data = new RenderTexture(_row, _column, 0, RenderTextureFormat.RFloat, 0);
+        _data.filterMode = FilterMode.Point;
         _grad = new RenderTexture(_row, _column, 0, RenderTextureFormat.RFloat, 0);
+        _grad.filterMode = FilterMode.Point;
         _isTextureReady = true;
     }
 
