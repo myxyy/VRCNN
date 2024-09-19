@@ -11,6 +11,9 @@ public class Matrix : IVariable
     private int _row = 128;
     [SerializeField]
     private int _column = 128;
+    [SerializeField]
+    private Material _init;
+    public override void Initialize() => VRCGraphics.Blit(null, _data, _init);
 
     private RenderTexture _data;
     public override RenderTexture Data() => _data;

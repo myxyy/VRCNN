@@ -8,25 +8,11 @@ using VRC.Udon;
 public class ForwardTest : UdonSharpBehaviour
 {
     [SerializeField]
-    private IVariable _a;
+    private IVariable[] _variableList;
     [SerializeField]
-    private Material _initA; 
+    private IVariable _forwardTrigger;
     [SerializeField]
-    private IVariable _b;
-    [SerializeField]
-    private Material _initB; 
-    [SerializeField]
-    private IVariable _c;
-    [SerializeField]
-    private Material _initC; 
-    [SerializeField]
-    private IVariable _d;
-    [SerializeField]
-    private Material _initD; 
-    [SerializeField]
-    private IVariable _e;
-    [SerializeField]
-    private Material _initE; 
+    private Material _init; 
     [SerializeField]
     private bool _forward;
 
@@ -37,38 +23,31 @@ public class ForwardTest : UdonSharpBehaviour
 
     private void Update()
     {
-        if (
-            !_isTextureInit &&
-            _a.IsTextureReady() &&
-            _b.IsTextureReady() &&
-            _c.IsTextureReady() &&
-            _d.IsTextureReady() &&
-            _e.IsTextureReady()
-        )
+        var isTextureReady = true;
+        foreach (var variable in _variableList)
         {
-            VRCGraphics.Blit(null, _a.Data(), _initA);
-            VRCGraphics.Blit(null, _b.Data(), _initB);
-            VRCGraphics.Blit(null, _c.Data(), _initC);
-            VRCGraphics.Blit(null, _d.Data(), _initD);
-            VRCGraphics.Blit(null, _e.Data(), _initE);
+            isTextureReady = isTextureReady && variable.IsTextureReady();
+        }
+
+        if (!_isTextureInit && isTextureReady)
+        {
+            foreach (var variable in _variableList)
+            {
+                variable.Initialize();
+                variable.ZeroGrad();
+            }
             _isTextureInit = true;
         }
 
         if (_forward)
         {
-            VRCGraphics.Blit(null, _a.Data(), _initA);
-            VRCGraphics.Blit(null, _b.Data(), _initB);
-            VRCGraphics.Blit(null, _c.Data(), _initC);
-            VRCGraphics.Blit(null, _d.Data(), _initD);
-            VRCGraphics.Blit(null, _e.Data(), _initE);
-
-            _a.ZeroGrad();
-            _b.ZeroGrad();
-            _c.ZeroGrad();
-            _d.ZeroGrad();
-            _e.ZeroGrad();
+            foreach (var variable in _variableList)
+            {
+                variable.Initialize();
+                variable.ZeroGrad();
+            }
  
-            _a.Forward();
+            _forwardTrigger.Forward();
             _forward = false;
         }
     }

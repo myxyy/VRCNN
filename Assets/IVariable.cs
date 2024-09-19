@@ -52,5 +52,6 @@ public class IVariable : UdonSharpBehaviour
     }
 
     public virtual void ZeroGrad(){}
+    public virtual void Initialize(){}
 }
 

@@ -67,6 +67,11 @@ public class MatMul : IFunction
             }
             case BACKWARD_A:
             {
+                if (_inputA.Grad() == null)
+                {
+                    _mode = BACKWARD_B;
+                    return;
+                }
                 matA = _output.Grad();
                 matB = _inputB.Data(); // Transpose
                 matC = _inputA.Grad();
@@ -74,6 +79,11 @@ public class MatMul : IFunction
             }
             case BACKWARD_B:
             {
+                if (_inputB.Grad() == null)
+                {
+                    _mode = SLEEP;
+                    return;
+                }
                 matA = _inputA.Data(); // Transpose
                 matB = _output.Grad();
                 matC = _inputB.Grad();
