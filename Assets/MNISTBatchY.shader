@@ -1,9 +1,10 @@
-﻿Shader "Unlit/MNISTBatchX"
+﻿Shader "Unlit/MNISTBatchY"
 {
     Properties
     {
         _MNIST ("MNIST", 2D) = "white" {}
         _BatchSize ("Batch Size", Int) = 64
+        _Debug ("Debug", Float) = 0
     }
     SubShader
     {
@@ -34,6 +35,7 @@
             float4 _MNIST_TexelSize;
             uint _IndexList[64];
             uint _BatchSize;
+            float _Debug;
 
             v2f vert (appdata v)
             {
@@ -68,9 +70,8 @@
 
             float4 frag (v2f i) : SV_Target
             {
-                uint index = _IndexList[(uint)floor(i.uv.x * _BatchSize)];
-
-                return getvaluefromtexture(uint(floor(i.uv.y*28*28))+uint(index*(28*28+1)));
+                uint index = _IndexList[floor(i.uv.x * _BatchSize)];
+                return floor(getvaluefromtexture((index+1)*(28*28+1)-1)*255+.5) == floor(i.uv.y*10) ? 1 : 0;
             }
             ENDCG
         }

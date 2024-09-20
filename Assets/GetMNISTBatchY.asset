@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
-  m_Name: GetMNISTBatchX
+  m_Name: GetMNISTBatchY
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: 4e1818cf67755c342a2897db026fad17,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 00461711df7cc1649834080fe58e4d2c,
     type: 2}
   udonAssembly: 
   assemblyError: 
-  sourceCsScript: {fileID: 11500000, guid: 73b00807cd552d645b22ce06f3ab682a, type: 3}
+  sourceCsScript: {fileID: 11500000, guid: 1866a30f3b7ea9549842cfcb852f2ff0, type: 3}
   scriptVersion: 2
   compiledVersion: 2
   behaviourSyncMode: 0
   hasInteractEvent: 0
-  scriptID: 6937264077068313424
+  scriptID: 5793832021597372156
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
@@ -284,13 +284,13 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: _MNISTXMaterial
+      Data: _MNISTYMaterial
     - Name: $v
       Entry: 7
       Data: 17|UdonSharp.Compiler.FieldDefinition, UdonSharp.Editor
     - Name: <Name>k__BackingField
       Entry: 1
-      Data: _MNISTXMaterial
+      Data: _MNISTYMaterial
     - Name: <UserType>k__BackingField
       Entry: 7
       Data: 18|System.RuntimeType, mscorlib
@@ -344,13 +344,13 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: _showMNISTXMaterial
+      Data: _showMNISTLabelMaterial
     - Name: $v
       Entry: 7
       Data: 21|UdonSharp.Compiler.FieldDefinition, UdonSharp.Editor
     - Name: <Name>k__BackingField
       Entry: 1
-      Data: _showMNISTXMaterial
+      Data: _showMNISTLabelMaterial
     - Name: <UserType>k__BackingField
       Entry: 9
       Data: 18

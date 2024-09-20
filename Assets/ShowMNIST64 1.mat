@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: mnist_mnist_X
-  m_Shader: {fileID: 4800000, guid: 815dfa803a47d46468e9eeb7f59521c8, type: 3}
+  m_Name: ShowMNIST64 1
+  m_Shader: {fileID: 4800000, guid: 5d59bec601285984ea7c37c05c89d9df, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -23,12 +23,15 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _DigitTex:
+        m_Texture: {fileID: 2800000, guid: deece394664acf947b662ea367872b49, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 7a349ede90298664bad6cbba6b9a97c7, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
-    m_Floats:
-    - _Index: 53
+    m_Floats: []
     m_Colors: []
   m_BuildTextureStacks: []

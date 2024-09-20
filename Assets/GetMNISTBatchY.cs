@@ -1,18 +1,19 @@
 ﻿
+using BestHTTP.SecureProtocol.Org.BouncyCastle.Asn1.Misc;
 using UdonSharp;
 using UnityEngine;
 using VRC.SDKBase;
 using VRC.Udon;
 
-public class GetMNISTBatchX : IVariable
+public class GetMNISTBatchY : IVariable
 {
     [SerializeField]
     private int _batchSize = 64;
-    private const int VECTOR_SIZE = 28*28;
+    private const int VECTOR_SIZE = 10;
     [SerializeField]
-    private Material _MNISTXMaterial;
+    private Material _MNISTYMaterial;
     [SerializeField]
-    private Material _showMNISTXMaterial;
+    private Material _showMNISTLabelMaterial;
 
     private RenderTexture _data;
     public override RenderTexture Data() => _data;
@@ -22,14 +23,14 @@ public class GetMNISTBatchX : IVariable
         _data.filterMode = FilterMode.Point;
         _isTextureReady = true;
 
-        _showMNISTXMaterial.SetTexture("_MainTex", _data);
+        _showMNISTLabelMaterial.SetTexture("_MainTex", _data);
 
         var indexList = new int[_batchSize];
         for (int i = 0; i < indexList.Length; i++)
         {
             indexList[i] = i;
         }
-        _MNISTXMaterial.SetInt("_BatchSize", _batchSize);
+        _MNISTYMaterial.SetInt("_BatchSize", _batchSize);
 
         FetchData(indexList);
     }
@@ -41,8 +42,7 @@ public class GetMNISTBatchX : IVariable
         {
             indexListFloat[i] = (float)indexList[i];
         }
-        _MNISTXMaterial.SetFloatArray("_IndexList", indexListFloat);
-        VRCGraphics.Blit(null, _data, _MNISTXMaterial);
+        _MNISTYMaterial.SetFloatArray("_IndexList", indexListFloat);
+        VRCGraphics.Blit(null, _data, _MNISTYMaterial);
     }
-
 }

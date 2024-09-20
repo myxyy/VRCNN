@@ -1,4 +1,4 @@
-Shader "Unlit/Display"
+Shader "Unlit/ShowMNIST64"
 {
     Properties
     {
@@ -14,8 +14,6 @@ Shader "Unlit/Display"
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
-            // make fog work
-            #pragma multi_compile_fog
 
             #include "UnityCG.cginc"
 
@@ -32,20 +30,28 @@ Shader "Unlit/Display"
             };
 
             sampler2D _MainTex;
+            float4 _MainTex_ST;
 
             v2f vert (appdata v)
             {
                 v2f o;
                 o.vertex = UnityObjectToClipPos(v.vertex);
-                o.uv = v.uv;
+                o.uv = TRANSFORM_TEX(v.uv, _MainTex);
                 return o;
             }
 
-            float4 frag (v2f i) : SV_Target
+            fixed4 frag (v2f i) : SV_Target
             {
-                float4 col = tex2Dlod(_MainTex, float4(1-i.uv.y, i.uv.x,0,0));
-                //col = tanh(col);
-                return float4(max(col.r, 0), 0, -min(col.r, 0), 1);
+                float2 uv = i.uv;
+                uv.y = 1 - uv.y;
+                float2 uv8i = floor(uv * 8);
+                float2 uv8f = frac(uv * 8);
+                float index = uv8i.y * 8 + uv8i.x;
+                float2 uv8_28i = floor(uv8f * 28);
+                float vindex = uv8_28i.y * 28 + uv8_28i.x;
+
+                fixed4 col = tex2Dlod(_MainTex, float4((index + 0.5) / 64, (vindex + 0.5) / (28*28), 0, 0)).r;
+                return col;
             }
             ENDCG
         }
