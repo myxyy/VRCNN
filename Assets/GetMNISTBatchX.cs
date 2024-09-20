@@ -23,15 +23,6 @@ public class GetMNISTBatchX : IVariable
         _isTextureReady = true;
 
         _showMNISTXMaterial.SetTexture("_MainTex", _data);
-
-        var indexList = new int[_batchSize];
-        for (int i = 0; i < indexList.Length; i++)
-        {
-            indexList[i] = i;
-        }
-        _MNISTXMaterial.SetInt("_BatchSize", _batchSize);
-
-        FetchData(indexList);
     }
 
     public void FetchData(int[] indexList)
