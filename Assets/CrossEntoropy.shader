@@ -1,4 +1,4 @@
-Shader "Unlit/SoftmaxCrossEntropy"
+Shader "Unlit/CrossEntropy"
 {
     Properties
     {
@@ -62,19 +62,6 @@ Shader "Unlit/SoftmaxCrossEntropy"
         }
 
         ENDCG
-
-        Pass
-        {
-            Name "Softmax"
-            CGPROGRAM
-
-            float4 frag (v2f i) : SV_Target
-            {
-                return softmax(i.uv);
-            }
-
-            ENDCG
-        }
 
         Pass
         {

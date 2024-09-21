@@ -81,11 +81,6 @@ public class ForwardTest : UdonSharpBehaviour
         {
             if (isParameterReady && isVariableReady)
             {
-                foreach (var variable in _variableList)
-                {
-                    variable.Initialize();
-                }
-
                 StartForward();
                 _forward = false;
             }
@@ -115,16 +110,6 @@ public class ForwardTest : UdonSharpBehaviour
         _batchX.FetchData(indexList);
         _batchY.FetchData(indexList);
 
-        foreach (var variable in _variableList)
-        {
-            variable.Initialize();
-        }
-
-        foreach (var parameter in _parameterList)
-        {
-            parameter.ZeroGrad();
-        }
- 
         _batchX.Forward();
         _batchY.Forward();
     }

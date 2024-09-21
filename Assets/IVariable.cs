@@ -19,8 +19,10 @@ public class IVariable : UdonSharpBehaviour
     }
     public virtual void Backward()
     {
+        Debug.Log($"BackwardTest0: {name} {IsBackwardReady()}");
         if (IsBackwardReady() && _input != null)
         {
+            Debug.Log($"BackwardTest1: {name}");
             _input.Backward();
         }
     }
@@ -35,6 +37,8 @@ public class IVariable : UdonSharpBehaviour
         }
         return true;
     }
+
+    public bool IsNoBackward() => _outputList.Length == 0;
  
     private IFunction _input = null;
     public void SetInput(IFunction input)

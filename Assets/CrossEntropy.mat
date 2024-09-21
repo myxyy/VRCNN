@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SGD
-  m_Shader: {fileID: 4800000, guid: 5ca4cd48c111b8245a7fe0c3227d6d07, type: 3}
+  m_Name: CrossEntropy
+  m_Shader: {fileID: 4800000, guid: 5a5ed3f40f8706a4fa967adfb25aeb70, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -23,17 +23,19 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _MatA:
+    - _OutGrad:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _MatB:
+    - _X:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Y:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
-    m_Floats:
-    - _CoefA: 1
-    - _CoefB: -0.01
+    m_Floats: []
     m_Colors: []
   m_BuildTextureStacks: []

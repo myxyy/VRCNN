@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 126918192023083502}
   - component: {fileID: 4851791838724512543}
   m_Layer: 0
-  m_Name: SoftmaxCrossEntropy
+  m_Name: CrossEntropy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

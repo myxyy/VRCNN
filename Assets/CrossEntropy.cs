@@ -33,7 +33,7 @@ public class CrossEntropy : IFunction
         {
             _crossEntropyMaterial.SetTexture("_X", _input.Data());
             _crossEntropyMaterial.SetTexture("_Y", _label.Data());
-            VRCGraphics.Blit(null, _output.Data(), _crossEntropyMaterial, 1);
+            VRCGraphics.Blit(null, _output.Data(), _crossEntropyMaterial, 0);
             FireOutputForward();
         }
     }
@@ -41,14 +41,16 @@ public class CrossEntropy : IFunction
     public override void Backward()
     {
         base.Backward();
+        Debug.Log($"CETest0:{name}");
         if (IsBackwardReady())
         {
+            Debug.Log($"CETest1:{name}");
             if (_input.Grad() != null)
             {
                 _crossEntropyMaterial.SetTexture("_X", _input.Data());
                 _crossEntropyMaterial.SetTexture("_Y", _label.Data());
                 _crossEntropyMaterial.SetTexture("_OutGrad", _output.Grad());
-                VRCGraphics.Blit(null, _input.Grad(), _crossEntropyMaterial, 2);
+                VRCGraphics.Blit(null, _input.Grad(), _crossEntropyMaterial, 1);
             }
             FireInputBackward();
         }

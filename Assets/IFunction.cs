@@ -6,12 +6,26 @@ using VRC.Udon;
 
 public class IFunction : UdonSharpBehaviour
 {
-    public virtual void Forward() => _isForwardComplete = false;
+    public virtual void Forward()
+    {
+        if (__output != null)
+        {
+            __output.Initialize();
+        }
+        _isForwardComplete = false;
+    }
     private bool _isForwardComplete = false;
     public bool IsForwardComplete() => _isForwardComplete;
-    public virtual void Backward() => _isBackwardComplete = false;
+    public virtual void Backward()
+    {
+        foreach (var input in __inputList)
+        {
+            input.ZeroGrad();
+        }
+        _isBackwardComplete = false;
+    }
     private bool _isBackwardComplete = false;
-    public bool IsBackwardComplete() => _isBackwardComplete;
+    public bool IsBackwardComplete() => _isBackwardComplete || __output.IsNoBackward();
     protected IVariable[] __inputList;
     protected bool IsForwardReady()
     {
@@ -25,7 +39,7 @@ public class IFunction : UdonSharpBehaviour
         return true;
     }
     protected bool IsBackwardReady() => __output.IsBackwardReady();
-    protected IVariable __output;
+    protected IVariable __output = null;
     protected void InitVariables()
     {
         foreach (var input in __inputList)
