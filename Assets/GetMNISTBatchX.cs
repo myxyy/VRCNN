@@ -13,6 +13,8 @@ public class GetMNISTBatchX : IVariable
     private Material _MNISTXMaterial;
     [SerializeField]
     private Material _showMNISTXMaterial;
+    [SerializeField]
+    private ForwardTest _forwardTest;
 
     private RenderTexture _data;
     public override RenderTexture Data() => _data;
@@ -36,4 +38,9 @@ public class GetMNISTBatchX : IVariable
         VRCGraphics.Blit(null, _data, _MNISTXMaterial);
     }
 
+    public override void Backward()
+    {
+        base.Backward();
+        _forwardTest.Next();
+    }
 }

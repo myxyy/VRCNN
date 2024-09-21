@@ -131,20 +131,20 @@ public class MatMul : IFunction
             {
                 case FORWARD:
                 {
-                    FireOutputForward();
                     _mode = SLEEP;
+                    FireOutputForward();
                     break;
                 }
                 case BACKWARD_A:
                 {
-                    _currentMInd = 0;
                     _mode = BACKWARD_B;
+                    _currentMInd = 0;
                     break;
                 }
                 case BACKWARD_B:
                 {
-                    FireInputBackward();
                     _mode = SLEEP;
+                    FireInputBackward();
                     break;
                 }
                 default:

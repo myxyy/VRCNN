@@ -4,6 +4,8 @@ Shader "Unlit/Add"
     {
         _MatA ("Matrix A", 2D) = "black" {}
         _MatB ("Matrix B", 2D) = "black" {}
+        _CoefA ("Coef A", Float) = 1
+        _CoefB ("Coef B", Float) = 1
     }
     SubShader
     {
@@ -36,6 +38,8 @@ Shader "Unlit/Add"
             float4 _MatA_TexelSize;
             sampler2D _MatB;
             float4 _MatB_TexelSize;
+            float _CoefA;
+            float _CoefB;
 
             v2f vert (appdata v)
             {
@@ -49,7 +53,7 @@ Shader "Unlit/Add"
             {
                 float4 a = tex2Dlod(_MatA, float4(i.uv,0,0));
                 float4 b = tex2Dlod(_MatB, float4(i.uv,0,0));
-                return a + b;
+                return _CoefA * a + _CoefB * b;
             }
             ENDCG
         }

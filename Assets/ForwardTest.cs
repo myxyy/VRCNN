@@ -1,16 +1,17 @@
 ﻿
-using System.Runtime.InteropServices;
 using UdonSharp;
 using UnityEngine;
 using VRC.SDKBase;
 using VRC.Udon;
 
-public class ForwardTest : UdonSharpBehaviour
+public class ForwardTest : UdonSharpBehaviour 
 {
+    [SerializeField]
+    private IVariable[] _parameterList;
     [SerializeField]
     private IVariable[] _variableList;
     [SerializeField]
-    private IVariable _forwardTrigger;
+    private IVariable[] _completeBackwardVariableList;
     [SerializeField]
     private Material _init; 
     [SerializeField]
@@ -22,11 +23,20 @@ public class ForwardTest : UdonSharpBehaviour
     private GetMNISTBatchX _batchX;
     [SerializeField]
     private GetMNISTBatchY _batchY;
+    [SerializeField]
+    private bool _optimize = false;
+    [SerializeField]
+    private float _learningRate = 0.1f;
+    [SerializeField]
+    private Material _addMaterial;
 
-    private bool _isTextureInit = false;
+    private bool _isParameterInit = false;
     private float _seed1 = 0.625425f;
     private float _seed2 = 12341.622425f;
     private float _seed3 = 0.1624425f;
+    private const int BATCH_SIZE = 64;
+    private const int DATASET_SIZE = 70000;
+    private int _currentIndex = 0;
     private void Start()
     {
         _permutedIndexList = new int[_size];
@@ -43,45 +53,93 @@ public class ForwardTest : UdonSharpBehaviour
             _seed1 = _seed1 * _seed2 + _seed3;
             _seed1 -= Mathf.FloorToInt(_seed1);
         }
-
     }
 
     private void Update()
     {
-        var isTextureReady = true;
+        var isParameterReady = true;
+        foreach (var parameter in _parameterList)
+        {
+            isParameterReady = isParameterReady && parameter.IsTextureReady();
+        }
+        var isVariableReady = true;
         foreach (var variable in _variableList)
         {
-            isTextureReady = isTextureReady && variable.IsTextureReady();
+            isVariableReady = isVariableReady && variable.IsTextureReady();
         }
 
-        if (!_isTextureInit && isTextureReady)
+        if (!_isParameterInit && isParameterReady)
         {
-            foreach (var variable in _variableList)
+            foreach (var parameter in _parameterList)
             {
-                variable.Initialize();
-                variable.ZeroGrad();
+                parameter.Initialize();
             }
-            _isTextureInit = true;
-
-            var indexList = new int[64];
-            for (int i = 0; i<64; i++)
-            {
-                indexList[i] = _permutedIndexList[i];
-            }
-            _batchX.FetchData(indexList);
-            _batchY.FetchData(indexList);
+            _isParameterInit = true;
         }
 
         if (_forward)
         {
-            foreach (var variable in _variableList)
+            if (isParameterReady && isVariableReady)
             {
-                variable.Initialize();
-                variable.ZeroGrad();
+                foreach (var variable in _variableList)
+                {
+                    variable.Initialize();
+                }
+
+                StartForward();
+                _forward = false;
             }
+        }
+
+        if (_optimize)
+        {
+            Optimize();
+            _optimize = false;
+        }
+    }
+
+    public void Next()
+    {
+        Optimize();
+        StartForward();
+    }
+
+    public void StartForward()
+    {
+        var indexList = new int[BATCH_SIZE];
+        for (int i = 0; i<indexList.Length; i++)
+        {
+            indexList[i] = _permutedIndexList[_currentIndex];
+            _currentIndex = (_currentIndex + 1) % DATASET_SIZE;
+        }
+        _batchX.FetchData(indexList);
+        _batchY.FetchData(indexList);
+
+        foreach (var variable in _variableList)
+        {
+            variable.Initialize();
+        }
+
+        foreach (var parameter in _parameterList)
+        {
+            parameter.ZeroGrad();
+        }
  
-            _forwardTrigger.Forward();
-            _forward = false;
+        _batchX.Forward();
+        _batchY.Forward();
+    }
+
+    private void Optimize()
+    {
+        foreach (var parameter in _parameterList)
+        {
+            _addMaterial.SetTexture("_MatA", parameter.Data());
+            _addMaterial.SetTexture("_MatB", parameter.Grad());
+            _addMaterial.SetFloat("_CoefB", -_learningRate);
+            var tempData = new RenderTexture(parameter.Data().width, parameter.Data().height, 0, RenderTextureFormat.RFloat);
+            tempData.filterMode = FilterMode.Point;
+            VRCGraphics.Blit(null, tempData, _addMaterial);
+            VRCGraphics.Blit(tempData, parameter.Data());
         }
     }
 }

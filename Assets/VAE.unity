@@ -644,7 +644,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4, y: 1, z: 0}
-  m_LocalScale: {x: 0.009765625, y: 0.0625, z: 1}
+  m_LocalScale: {x: 0.0009765625, y: 0.0625, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1207,7 +1207,9 @@ GameObject:
   m_Component:
   - component: {fileID: 285777778}
   - component: {fileID: 285777777}
+  - component: {fileID: 285777780}
   - component: {fileID: 285777776}
+  - component: {fileID: 285777779}
   m_Layer: 0
   m_Name: ForwardTest
   m_TagString: Untagged
@@ -1262,23 +1264,28 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  _udonSharpBackingUdonBehaviour: {fileID: 285777776}
-  _variableList:
+  _udonSharpBackingUdonBehaviour: {fileID: 285777779}
+  _parameterList:
   - {fileID: 1337800990}
-  - {fileID: 126129409}
   - {fileID: 862318398}
+  - {fileID: 128712459}
+  - {fileID: 332306150}
+  _variableList:
+  - {fileID: 126129409}
   - {fileID: 1094824082}
   - {fileID: 1471953095}
   - {fileID: 452608910}
-  - {fileID: 128712459}
-  - {fileID: 332306150}
   - {fileID: 58801137}
-  _forwardTrigger: {fileID: 1499579958}
+  - {fileID: 765209282}
+  _completeBackwardVariableList: []
   _init: {fileID: 2100000, guid: a69e62c19e2b9c5468c247c930629527, type: 2}
   _forward: 0
   _size: 70000
   _batchX: {fileID: 1499579958}
   _batchY: {fileID: 887591174}
+  _optimize: 0
+  _learningRate: 0.01
+  _addMaterial: {fileID: 2100000, guid: 7eebeade0dd19a446a6f0ed85693fda8, type: 2}
 --- !u!4 &285777778
 Transform:
   m_ObjectHideFlags: 0
@@ -1294,6 +1301,65 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &285777779
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 285777775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45115577ef41a5b4ca741ed302693907, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactTextPlacement: {fileID: 0}
+  interactText: Use
+  interactTextGO: {fileID: 0}
+  proximity: 2
+  SynchronizePosition: 0
+  AllowCollisionOwnershipTransfer: 0
+  Reliable: 0
+  _syncMethod: 2
+  serializedProgramAsset: {fileID: 11400000, guid: ec0710ab53c9cd1408a5be4e54e7f990,
+    type: 2}
+  programSource: {fileID: 11400000, guid: 0c866c62b4e8dc6458a34e13a686eeba, type: 2}
+  serializedPublicVariablesBytesString: Ai8AAAAAATIAAABWAFIAQwAuAFUAZABvAG4ALgBDAG8AbQBtAG8AbgAuAFUAZABvAG4AVgBhAHIAaQBhAGIAbABlAFQAYQBiAGwAZQAsACAAVgBSAEMALgBVAGQAbwBuAC4AQwBvAG0AbQBvAG4AAAAAAAYBAAAAAAAAACcBBAAAAHQAeQBwAGUAAWgAAABTAHkAcwB0AGUAbQAuAEMAbwBsAGwAZQBjAHQAaQBvAG4AcwAuAEcAZQBuAGUAcgBpAGMALgBMAGkAcwB0AGAAMQBbAFsAVgBSAEMALgBVAGQAbwBuAC4AQwBvAG0AbQBvAG4ALgBJAG4AdABlAHIAZgBhAGMAZQBzAC4ASQBVAGQAbwBuAFYAYQByAGkAYQBiAGwAZQAsACAAVgBSAEMALgBVAGQAbwBuAC4AQwBvAG0AbQBvAG4AXQBdACwAIABtAHMAYwBvAHIAbABpAGIAAQEJAAAAVgBhAHIAaQBhAGIAbABlAHMALwEAAAABaAAAAFMAeQBzAHQAZQBtAC4AQwBvAGwAbABlAGMAdABpAG8AbgBzAC4ARwBlAG4AZQByAGkAYwAuAEwAaQBzAHQAYAAxAFsAWwBWAFIAQwAuAFUAZABvAG4ALgBDAG8AbQBtAG8AbgAuAEkAbgB0AGUAcgBmAGEAYwBlAHMALgBJAFUAZABvAG4AVgBhAHIAaQBhAGIAbABlACwAIABWAFIAQwAuAFUAZABvAG4ALgBDAG8AbQBtAG8AbgBdAF0ALAAgAG0AcwBjAG8AcgBsAGkAYgABAAAABgEAAAAAAAAAAi8CAAAAAUkAAABWAFIAQwAuAFUAZABvAG4ALgBDAG8AbQBtAG8AbgAuAFUAZABvAG4AVgBhAHIAaQBhAGIAbABlAGAAMQBbAFsAUwB5AHMAdABlAG0ALgBJAG4AdAAzADIALAAgAG0AcwBjAG8AcgBsAGkAYgBdAF0ALAAgAFYAUgBDAC4AVQBkAG8AbgAuAEMAbwBtAG0AbwBuAAIAAAAGAgAAAAAAAAAnAQQAAAB0AHkAcABlAAEXAAAAUwB5AHMAdABlAG0ALgBTAHQAcgBpAG4AZwAsACAAbQBzAGMAbwByAGwAaQBiACcBCgAAAFMAeQBtAGIAbwBsAE4AYQBtAGUAAR8AAABfAF8AXwBVAGQAbwBuAFMAaABhAHIAcABCAGUAaABhAHYAaQBvAHUAcgBWAGUAcgBzAGkAbwBuAF8AXwBfACcBBAAAAHQAeQBwAGUAARYAAABTAHkAcwB0AGUAbQAuAEkAbgB0ADMAMgAsACAAbQBzAGMAbwByAGwAaQBiABcBBQAAAFYAYQBsAHUAZQACAAAABwUHBQcF
+  publicVariablesUnityEngineObjects: []
+  publicVariablesSerializationDataFormat: 0
+--- !u!114 &285777780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 285777775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 953e8f527ffd66e42b8790c1b6c0225d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  _udonSharpBackingUdonBehaviour: {fileID: 285777776}
+  _parameterList: []
+  _variableList: []
+  _completeBackwardVariableList: []
+  _init: {fileID: 0}
+  _forward: 0
+  _size: 70000
+  _batchX: {fileID: 0}
+  _batchY: {fileID: 0}
+  _optimize: 0
+  _learningRate: 0.1
+  _addMaterial: {fileID: 0}
 --- !u!1 &332306149
 GameObject:
   m_ObjectHideFlags: 0
@@ -1737,7 +1803,7 @@ MonoBehaviour:
   _output: {fileID: 1094824082}
   _addBiasPrefab: {fileID: 8716270207462288705, guid: c942119516f4608468eff8c91a348fc2,
     type: 3}
-  _numAccumulatePerFrame: 16
+  _numAccumulatePerFrame: 32
 --- !u!1 &646857365
 GameObject:
   m_ObjectHideFlags: 0
@@ -3013,7 +3079,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4, y: 2, z: 0}
-  m_LocalScale: {x: 0.009765625, y: 0.0625, z: 1}
+  m_LocalScale: {x: 0.0009765625, y: 0.0625, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -4409,6 +4475,7 @@ MonoBehaviour:
   _batchSize: 64
   _MNISTXMaterial: {fileID: 2100000, guid: 27c28a0642a304d4f85b0bc140c8b5f9, type: 2}
   _showMNISTXMaterial: {fileID: 2100000, guid: 1081b28e75571e94d87a6aa5dd8e1aab, type: 2}
+  _forwardTest: {fileID: 285777777}
 --- !u!4 &1499579959
 Transform:
   m_ObjectHideFlags: 0
@@ -5096,7 +5163,7 @@ MonoBehaviour:
   _output: {fileID: 58801137}
   _addBiasPrefab: {fileID: 8716270207462288705, guid: c942119516f4608468eff8c91a348fc2,
     type: 3}
-  _numAccumulatePerFrame: 16
+  _numAccumulatePerFrame: 32
 --- !u!1 &1891382825
 GameObject:
   m_ObjectHideFlags: 0

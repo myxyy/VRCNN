@@ -11,13 +11,13 @@ public class IVariable : UdonSharpBehaviour
     public virtual RenderTexture Grad(){ return null; }
     protected bool _isTextureReady;
     public bool IsTextureReady() => _isTextureReady;
-    public void Forward(){
+    public virtual void Forward(){
         foreach (var output in _outputList)
         {
             output.Forward();
         }
     }
-    public void Backward()
+    public virtual void Backward()
     {
         if (IsBackwardReady() && _input != null)
         {
