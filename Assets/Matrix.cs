@@ -31,5 +31,6 @@ public class Matrix : IVariable
     public override void ZeroGrad()
     {
         _grad = new RenderTexture(_row, _column, 0, RenderTextureFormat.RFloat, 0);
+        _grad.filterMode = FilterMode.Point;
     }
 }

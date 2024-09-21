@@ -36,8 +36,18 @@ public class IVariable : UdonSharpBehaviour
         return true;
     }
  
-    private IFunction _input;
-    public void SetInput(IFunction input) => _input = input;
+    private IFunction _input = null;
+    public void SetInput(IFunction input)
+    {
+        if (_input == null)
+        {
+            _input = input;
+        }
+        else
+        {
+            Debug.LogError($"IVariable must not have more than one input: {_input.name} {input.name}");
+        }
+    }
     public bool IsForwardReady() => _input ? _input.IsForwardComplete() : true;
     private IFunction[] _outputList = new IFunction[0];
     public void AddOutput(IFunction output)
