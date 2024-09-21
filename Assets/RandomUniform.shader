@@ -50,7 +50,7 @@ Shader "Unlit/RandomUniform"
 
             float4 frag (v2f i) : SV_Target
             {
-                return h31(float3(i.uv, _Seed)) * 2 - 1;
+                return (h31(float3(i.uv, _Seed)) * 2 - 1);
             }
             ENDCG
         }

@@ -114,6 +114,7 @@ public class MatMul : IFunction
         var m = colA;
         var mIndMaxCurrentFrame = Mathf.Min(_currentMInd + _numAccumulatePerFrame, m);
         var matCTemp = new RenderTexture(matC.width, matC.height, 0, RenderTextureFormat.RFloat, 0);
+        matCTemp.filterMode = FilterMode.Point;
         _matmulMaterial.SetTexture("_MatA", matA);
         _matmulMaterial.SetTexture("_MatB", matB);
         _matmulMaterial.SetFloat("_TransposeA", _mode == BACKWARD_B ? 1 : 0);
