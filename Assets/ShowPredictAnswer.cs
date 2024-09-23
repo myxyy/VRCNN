@@ -4,7 +4,7 @@ using UnityEngine;
 using VRC.SDKBase;
 using VRC.Udon;
 
-public class ShowPredictAnswer : UdonSharpBehaviour
+public class ShowPredictAnswer : IFunction
 {
     [SerializeField]
     private IVariable _predict;
@@ -12,15 +12,29 @@ public class ShowPredictAnswer : UdonSharpBehaviour
     private IVariable _answer;
     [SerializeField]
     private Material _material;
-    private bool _isInit = false;
+    private RenderTexture _predictTex;
+    private RenderTexture _answerTex;
 
-    private void Update()
+    private void Start()
     {
-        if (!_isInit && _predict.IsTextureReady() && _answer.IsTextureReady())
+        _predictTex = new RenderTexture(64, 10, 0, RenderTextureFormat.RFloat, 0);
+        _predictTex.filterMode = FilterMode.Point;
+        _answerTex = new RenderTexture(64, 10, 0, RenderTextureFormat.RFloat, 0);
+        _answerTex.filterMode = FilterMode.Point;
+        _material.SetTexture("_MainTex", _predictTex);
+        _material.SetTexture("_LabelTex", _answerTex);
+
+        __inputList = new IVariable[2]{_predict, _answer};
+        InitVariables();
+    }
+
+    public override void Forward()
+    {
+        base.Forward();
+        if (IsForwardReady())
         {
-            _material.SetTexture("_MainTex", _predict.Data());
-            _material.SetTexture("_LabelTex", _answer.Data());
-            _isInit = true;
+            VRCGraphics.Blit(_predict.Data(), _predictTex);
+            VRCGraphics.Blit(_answer.Data(), _answerTex);
         }
     }
 }

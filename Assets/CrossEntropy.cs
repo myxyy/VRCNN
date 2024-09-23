@@ -41,10 +41,8 @@ public class CrossEntropy : IFunction
     public override void Backward()
     {
         base.Backward();
-        Debug.Log($"CETest0:{name}");
         if (IsBackwardReady())
         {
-            Debug.Log($"CETest1:{name}");
             if (_input.Grad() != null)
             {
                 _crossEntropyMaterial.SetTexture("_X", _input.Data());

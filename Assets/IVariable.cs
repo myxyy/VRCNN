@@ -47,6 +47,18 @@ public class IVariable : UdonSharpBehaviour
         }
         return true;
     }
+
+    public void Reset()
+    {
+        if (_input != null)
+        {
+            _input.Reset();
+        }
+        foreach (var output in _outputList)
+        {
+            output.Reset(); 
+        }
+    }
  
     private IFunction _input = null;
     public void SetInput(IFunction input)

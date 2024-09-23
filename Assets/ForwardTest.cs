@@ -110,6 +110,8 @@ public class ForwardTest : UdonSharpBehaviour
         _batchX.FetchData(indexList);
         _batchY.FetchData(indexList);
 
+        _batchX.Reset();
+
         _batchX.Forward();
         _batchY.Forward();
     }

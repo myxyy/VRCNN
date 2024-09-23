@@ -1,11 +1,12 @@
 ﻿
 using UdonSharp;
 using UnityEngine;
+using UnityEngine.UI;
 using VRC.SDKBase;
 using VRC.Udon;
 
-[RequireComponent(typeof(MeshRenderer))]
-public class Display : UdonSharpBehaviour
+[RequireComponent(typeof(RawImage))]
+public class DisplayRawImage : UdonSharpBehaviour
 {
     [SerializeField]
     private IVariable _target;
@@ -26,7 +27,6 @@ public class Display : UdonSharpBehaviour
     }
     private void SetTexture(RenderTexture renderTexture)
     {
-        Debug.Log($"SetTexture {name}");
         if (renderTexture == null)
         {
             return;
@@ -34,8 +34,10 @@ public class Display : UdonSharpBehaviour
         var displayObject = Instantiate(_displayPrefab);
         _displayMaterial = displayObject.GetComponent<MeshRenderer>().material;
         Destroy(displayObject);
-        var renderer = GetComponent<MeshRenderer>();
+        var renderer = GetComponent<RawImage>();
         renderer.material = _displayMaterial;
         _displayMaterial.SetTexture("_MainTex", renderTexture);
     }
 }
+
+

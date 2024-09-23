@@ -29,7 +29,14 @@ public class Activation : IFunction
         base.Forward();
         if (IsForwardReady())
         {
-            VRCGraphics.Blit(_input.Data(), _output.Data(), _activationMaterial, 0);
+            if (_activationMaterial)
+            {
+                VRCGraphics.Blit(_input.Data(), _output.Data(), _activationMaterial, 0);
+            }
+            else
+            {
+                VRCGraphics.Blit(_input.Data(), _output.Data());
+            }
             FireOutputForward();
         }
     }
@@ -41,8 +48,15 @@ public class Activation : IFunction
         {
             if (_input.Grad() != null)
             {
-                _activationMaterial.SetTexture("_Grad", _output.Grad());
-                VRCGraphics.Blit(_input.Data(), _input.Grad(), _activationMaterial, 1);
+                if (_activationMaterial)
+                {
+                    _activationMaterial.SetTexture("_Grad", _output.Grad());
+                    VRCGraphics.Blit(_input.Data(), _input.Grad(), _activationMaterial, 1);
+                }
+                else
+                {
+                    VRCGraphics.Blit(_input.Data(), _input.Grad());
+                }
             }
             FireInputBackward();
         }

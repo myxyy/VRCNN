@@ -24,9 +24,25 @@ public class IFunction : UdonSharpBehaviour
         }
         _isBackwardComplete = false;
     }
+    public void Reset()
+    {
+        if (_isForwardComplete || _isBackwardComplete)
+        {
+            _isForwardComplete = false;
+            _isBackwardComplete = false;
+            foreach (var input in __inputList)
+            {
+                input.Reset();
+            }
+            if (__output != null)
+            {
+                __output.Reset();
+            }
+        }
+    }
     private bool _isBackwardComplete = false;
     public bool IsBackwardComplete() => _isBackwardComplete || IsNoBackward();
-    public bool IsNoBackward() => __output.IsNoBackward();
+    public bool IsNoBackward() => __output == null || __output.IsNoBackward();
     protected IVariable[] __inputList;
     protected bool IsForwardReady()
     {

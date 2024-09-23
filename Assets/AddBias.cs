@@ -94,10 +94,8 @@ public class AddBias : IFunction
     public override void Backward()
     {
         base.Backward();
-        Debug.Log($"AddBiasTest0:{name}");
         if (IsBackwardReady())
         {
-            Debug.Log($"AddBiasTest1:{name}");
             VRCGraphics.Blit(_output.Grad(), _input.Grad());
             _currentMInd = 0;
             _isRequestAccBiasGrad = true;
