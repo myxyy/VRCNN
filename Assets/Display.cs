@@ -26,7 +26,6 @@ public class Display : UdonSharpBehaviour
     }
     private void SetTexture(RenderTexture renderTexture)
     {
-        Debug.Log($"SetTexture {name}");
         if (renderTexture == null)
         {
             return;
