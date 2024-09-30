@@ -12,8 +12,6 @@ public class GetMNISTBatchY : IVariable
     private const int VECTOR_SIZE = 10;
     [SerializeField]
     private Material _MNISTYMaterial;
-    [SerializeField]
-    private Material _showMNISTLabelMaterial;
 
     private RenderTexture _data;
     public override RenderTexture Data() => _data;
@@ -22,8 +20,6 @@ public class GetMNISTBatchY : IVariable
         _data = new RenderTexture(_batchSize, VECTOR_SIZE, 0, RenderTextureFormat.RFloat, 0);
         _data.filterMode = FilterMode.Point;
         _isTextureReady = true;
-
-        _showMNISTLabelMaterial.SetTexture("_MainTex", _data);
     }
 
     public void FetchData(int[] indexList)

@@ -12,8 +12,6 @@ public class GetMNISTBatchX : IVariable
     [SerializeField]
     private Material _MNISTXMaterial;
     [SerializeField]
-    private Material _showMNISTXMaterial;
-    [SerializeField]
     private ForwardTest _forwardTest;
 
     private RenderTexture _data;
@@ -23,8 +21,6 @@ public class GetMNISTBatchX : IVariable
         _data = new RenderTexture(_batchSize, VECTOR_SIZE, 0, RenderTextureFormat.RFloat, 0);
         _data.filterMode = FilterMode.Point;
         _isTextureReady = true;
-
-        _showMNISTXMaterial.SetTexture("_MainTex", _data);
     }
 
     public void FetchData(int[] indexList)
