@@ -966,7 +966,7 @@ MonoBehaviour:
   _output: {fileID: 1398105727}
   _addBiasPrefab: {fileID: 8716270207462288705, guid: c942119516f4608468eff8c91a348fc2,
     type: 3}
-  _numAccumulatePerFrame: 16
+  _numAccumulatePerFrame: 32
 --- !u!4 &132356931
 Transform:
   m_ObjectHideFlags: 0
@@ -2777,7 +2777,7 @@ MonoBehaviour:
   _udonSharpBackingUdonBehaviour: {fileID: 292592251}
   _flattenMaterial: {fileID: 2100000, guid: f74db474ec52c8244a2112b8e2ef33f8, type: 2}
   _drawing: {fileID: 8400000, guid: f7ad3fdb918664048a3d600cda9361f4, type: 2}
-  _updateFrameInterval: 60
+  _updateFrameInterval: 100
 --- !u!4 &292592253
 Transform:
   m_ObjectHideFlags: 0
