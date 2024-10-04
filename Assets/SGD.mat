@@ -34,6 +34,6 @@ Material:
     m_Ints: []
     m_Floats:
     - _CoefA: 1
-    - _CoefB: -0.01
+    - _CoefB: -0.001
     m_Colors: []
   m_BuildTextureStacks: []

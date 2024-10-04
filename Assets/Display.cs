@@ -14,14 +14,14 @@ public class Display : UdonSharpBehaviour
     [SerializeField]
     private GameObject _displayPrefab;
     private Material _displayMaterial;
-    private bool _isSetComplete = false;
+    private RenderTexture _targetTexture = null;
 
     private void Update()
     {
-        if (!_isSetComplete && _target.IsTextureReady())
+        var targetTexture = _isGrad ? _target.Grad() : _target.Data();
+        if (_target.IsTextureReady() && (_targetTexture == null || _targetTexture != targetTexture))
         {
-            SetTexture(_isGrad ? _target.Grad() : _target.Data());
-            _isSetComplete = true;
+            SetTexture(targetTexture);
         }
     }
     private void SetTexture(RenderTexture renderTexture)

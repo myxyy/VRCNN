@@ -9,7 +9,8 @@ public class IVariable : UdonSharpBehaviour
 {
     public virtual RenderTexture Data(){ return null; }
     public virtual RenderTexture Grad(){ return null; }
-    protected bool _isTextureReady;
+    private bool _isTextureReady;
+    protected bool SetIsTextureReady() => _isTextureReady = true;
     public bool IsTextureReady() => _isTextureReady;
     public virtual void Forward(){
         foreach (var output in _outputList)

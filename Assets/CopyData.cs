@@ -13,9 +13,9 @@ public class CopyData : IVariable
 
     private void Update()
     {
-        if (!_isTextureReady && _target.IsTextureReady())
+        if (!IsTextureReady() && _target.IsTextureReady())
         {
-            _isTextureReady = true;
+            SetIsTextureReady();
         }
     }
 }

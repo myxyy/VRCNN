@@ -21,7 +21,7 @@ public class GetDrawing : IVariable
     {
         _data = new RenderTexture(1, _drawing.width * _drawing.height, 0, RenderTextureFormat.RFloat);
         _data.filterMode = FilterMode.Point;
-        _isTextureReady = true;
+        SetIsTextureReady();
     }
 
 

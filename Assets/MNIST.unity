@@ -3967,7 +3967,7 @@ GameObject:
   - component: {fileID: 523436627}
   - component: {fileID: 523436626}
   m_Layer: 0
-  m_Name: ex_xW1+b1
+  m_Name: Ex_xW1+b1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4041,7 +4041,7 @@ MonoBehaviour:
   _output: {fileID: 1094824082}
   _addBiasPrefab: {fileID: 8716270207462288705, guid: c942119516f4608468eff8c91a348fc2,
     type: 3}
-  _numAccumulatePerFrame: 16
+  _numAccumulatePerFrame: 32
 --- !u!1 &607708425
 GameObject:
   m_ObjectHideFlags: 0
@@ -4306,7 +4306,7 @@ GameObject:
   - component: {fileID: 646857367}
   - component: {fileID: 646857366}
   m_Layer: 0
-  m_Name: ex_ReLU(xW1+b1)
+  m_Name: Ex_ReLU(xW1+b1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9219,7 +9219,7 @@ GameObject:
   - component: {fileID: 1404816479}
   - component: {fileID: 1404816478}
   m_Layer: 0
-  m_Name: ex_xW1
+  m_Name: Ex_xW1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9278,7 +9278,7 @@ MonoBehaviour:
   _output: {fileID: 126129409}
   _matmulPrefab: {fileID: 82405336186970830, guid: 0f7bb881a7646cb4d81f720dca8cd97b,
     type: 3}
-  _numAccumulatePerFrame: 16
+  _numAccumulatePerFrame: 32
 --- !u!4 &1404816480
 Transform:
   m_ObjectHideFlags: 0
@@ -11583,7 +11583,7 @@ GameObject:
   - component: {fileID: 1804696109}
   - component: {fileID: 1804696108}
   m_Layer: 0
-  m_Name: ex_ReLU(xW2+b1)W2+b2
+  m_Name: Ex_ReLU(xW2+b1)W2+b2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11657,7 +11657,7 @@ MonoBehaviour:
   _output: {fileID: 58801137}
   _addBiasPrefab: {fileID: 8716270207462288705, guid: c942119516f4608468eff8c91a348fc2,
     type: 3}
-  _numAccumulatePerFrame: 16
+  _numAccumulatePerFrame: 32
 --- !u!1 &1830743357
 GameObject:
   m_ObjectHideFlags: 0
@@ -11970,7 +11970,7 @@ GameObject:
   - component: {fileID: 2002248374}
   - component: {fileID: 2002248373}
   m_Layer: 0
-  m_Name: ex_ReLU(xW2+b1)W2
+  m_Name: Ex_ReLU(xW2+b1)W2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12029,7 +12029,7 @@ MonoBehaviour:
   _output: {fileID: 452608910}
   _matmulPrefab: {fileID: 82405336186970830, guid: 0f7bb881a7646cb4d81f720dca8cd97b,
     type: 3}
-  _numAccumulatePerFrame: 16
+  _numAccumulatePerFrame: 32
 --- !u!4 &2002248375
 Transform:
   m_ObjectHideFlags: 0

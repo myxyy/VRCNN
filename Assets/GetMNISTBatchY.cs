@@ -19,7 +19,7 @@ public class GetMNISTBatchY : IVariable
     {
         _data = new RenderTexture(_batchSize, VECTOR_SIZE, 0, RenderTextureFormat.RFloat, 0);
         _data.filterMode = FilterMode.Point;
-        _isTextureReady = true;
+        SetIsTextureReady();
     }
 
     public void FetchData(int[] indexList)
